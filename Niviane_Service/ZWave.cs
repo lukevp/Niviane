@@ -53,7 +53,7 @@ namespace Niviane_Service
             m_manager.OnNotification += new ManagedNotificationsHandler(NotificationHandler);
             if (ZWavePollInterval  > 0)
             {
-                m_manager.SetPollInterval(ZWavePollInterval);
+                m_manager.SetPollInterval(ZWavePollInterval, false);
             }
 
             // Add a driver, this will start up the z-wave network
