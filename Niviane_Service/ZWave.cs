@@ -184,6 +184,7 @@ namespace Niviane_Service
                         Log("Turning off binary power switch " + NodeID.ToString());
                     }
                     break;
+                case "Multilevel Scene Switch":
                 case "Multilevel Switch":
                     if (Value > 0)
                     {
