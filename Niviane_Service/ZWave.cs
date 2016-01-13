@@ -229,6 +229,18 @@ namespace Niviane_Service
         }
 
 
+
+
+        public void SetNodeLevel(byte NodeID, byte Value)
+        {
+            m_manager.SetNodeLevel(m_homeId, NodeID, Value);
+            Log("Setting level for " + NodeID.ToString() + " to " + Value.ToString());
+              
+            // Update the controller state to reflect this value
+            SetValueID(NodeID, "Level", Value);
+        }
+
+
         public void SetNodeName(byte NodeID, string Name)
         {
             if (Name.Length > 16)

@@ -79,6 +79,11 @@ namespace Niviane_Service
         [WebGet(UriTemplate = "node/{NodeID}/basic/{Value}")]
          Boolean NodeBasic(string NodeID, string Value);
 
+        
+        [OperationContract(Name = "NodeLevel")]
+        [WebGet(UriTemplate = "node/{NodeID}/level/{Value}")]
+        Boolean NodeLevel(string NodeID, string Value);
+
         [OperationContract(Name = "NodePollingOn")]
         [WebGet(UriTemplate = "node/{NodeID}/pollingon/{Value}")]
         Boolean NodePollingOn(string NodeID, string Value);
@@ -202,6 +207,19 @@ namespace Niviane_Service
             return false;
         }
 
+        public Boolean NodeLevel(string NodeID, string Value)
+        {
+            byte nodeID, value;
+
+            ZWave.Log("WCFService", "NodeLevel");
+            if (byte.TryParse(NodeID, out nodeID) && byte.TryParse(Value, out value))
+            {
+                zwaveControl.SetNodeLevel(nodeID, value);
+                return true;
+            }
+
+            return false;
+        }
 
         public Boolean NodePollingOn(string NodeID, string Value)
         {
